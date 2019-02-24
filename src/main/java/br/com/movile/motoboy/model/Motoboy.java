@@ -21,4 +21,9 @@ public class Motoboy {
 		this.location = location;
 	}
 
+	@Override
+	public String toString() {
+		return "Motoboy [id=" + id + ", location=" + location + "]";
+	}
+
 }

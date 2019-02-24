@@ -2,8 +2,14 @@ package br.com.movile;
 
 import br.com.movile.customer.repository.CustomerRepository;
 import br.com.movile.item.repository.ItemRepository;
+import br.com.movile.motoboy.model.Motoboy;
 import br.com.movile.motoboy.repository.MotoboyRepository;
+import br.com.movile.motoboy.service.MotoboyService;
+import br.com.movile.restaurant.model.Restaurant;
 import br.com.movile.restaurant.repository.RestaurantRepository;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +27,8 @@ public class CargaGeral {
     private RestaurantRepository estabelecimentoDAO;
     @Autowired
     private ItemRepository produtoDAO;
+    @Autowired
+    private MotoboyService service;
 
 
     @GetMapping
@@ -33,7 +41,20 @@ public class CargaGeral {
         carga.getEstabelecimentos().stream().forEach(x -> estabelecimentoDAO.save(x));
         carga.getProdutos().stream().forEach(x -> produtoDAO.save(x));
 
-        return "Carga Completa !";
+        Restaurant restaurant = carga.getEstabelecimentos().get(800);
+        
+        System.err.println(restaurant);
+        
+        List<Motoboy> buscaPorProximidade = service.buscaPorProximidade(restaurant,700.0);
+        
+        StringBuilder builder = new StringBuilder();
+        
+        buscaPorProximidade.forEach(x -> {        	
+        	System.out.println(x);
+        	builder.append(x + "  ");        	
+        });
+        
+        return "Ok";
     }
 
 }

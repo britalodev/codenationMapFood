@@ -65,4 +65,10 @@ public class Restaurant implements Serializable {
 	public void setLocation(GeoJsonPoint location) {
 		this.location = location;
 	}
+
+	@Override
+	public String toString() {
+		return "Restaurant [id=" + id + ", name=" + name + ", addressCity=" + addressCity + ", location=" + location
+				+ ", dishDescription=" + dishDescription + "]";
+	}
 }
