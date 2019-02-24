@@ -1,15 +1,16 @@
 package br.com.movile.motoboy.service;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.geo.Circle;
-import org.springframework.data.geo.Distance;
+import org.springframework.data.geo.GeoResult;
+import org.springframework.data.geo.GeoResults;
 import org.springframework.data.geo.Metrics;
-import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.stereotype.Service;
 import org.springframework.data.geo.Point;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.NearQuery;
+import org.springframework.stereotype.Service;
 
 import br.com.movile.motoboy.model.Motoboy;
 import br.com.movile.motoboy.repository.MotoboyRepository;
@@ -24,18 +25,13 @@ public class MotoboyService {
     private MongoOperations mongoOperations;
     
     
-    public List<Motoboy> buscaPorProximidade(Restaurant restaurant, double distance){
+    public List<GeoResult<Motoboy>> buscaPorProximidade(Restaurant restaurant, Double distance){
     	
-    	Point point = new Point(restaurant.getLocation().getX(), restaurant.getLocation().getY());
+    	Point point = new Point(restaurant.getLocation().getX(), restaurant.getLocation().getY());    	 	
+    	   	
+    	NearQuery maxDistance = NearQuery.near(point).inKilometers().maxDistance(distance, Metrics.KILOMETERS);
     	
-    	Distance distanceKm = new Distance(distance, Metrics.KILOMETERS);
-    	
-    	Circle area = new Circle(point, distanceKm);
-    	
-    	Query query = new Query();
-    	query.addCriteria(Criteria.where("location").withinSphere(area)).skip(1).limit(5);
-    	
-    	return mongoOperations.find(query, Motoboy.class);
+    	return mongoOperations.geoNear(maxDistance, Motoboy.class).getContent().stream().limit(5).collect(Collectors.toList());
     }
     
 }
