@@ -9,17 +9,14 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
+
 import br.com.movile.customer.model.Customer;
+import br.com.movile.item.model.Item;
 import br.com.movile.motoboy.model.Motoboy;
 import br.com.movile.restaurant.model.Restaurant;
-import br.com.movile.item.model.Item;
 
 public class Carga {
-
-	public static void main(String[] args) {
-		Carga carga = new Carga();
-		carga.cargaGeral();
-	}
 
 	Path caminho = null;
 	List<String> allLines;
@@ -46,7 +43,7 @@ public class Carga {
 				double longitude = Double.parseDouble(parseLine.get(1));
 				double latitude = Double.parseDouble(parseLine.get(2));
 
-				clientes.add(new Customer(id, longitude, latitude));
+				clientes.add(new Customer(id, new GeoJsonPoint(latitude,longitude)));
 			});
 
 		} catch (Exception e1) {
@@ -66,9 +63,9 @@ public class Carga {
 
 				String id = parseLine.get(0).replaceAll(",", "");
 				double longitude = Double.parseDouble(parseLine.get(1));
-				double latitude = Double.parseDouble(parseLine.get(2));
-
-				motoboy.add(new Motoboy(id, longitude, latitude));
+				double latitude = Double.parseDouble(parseLine.get(2));				
+				
+				motoboy.add(new Motoboy(id, new GeoJsonPoint(latitude,longitude)));
 			});
 
 		} catch (Exception e1) {
@@ -109,9 +106,9 @@ public class Carga {
 				String cidade = parseLine.get(2);
 				double longitude = Double.parseDouble(parseLine.get(3));
 				double latitude = Double.parseDouble(parseLine.get(4));
-				String descricao = parseLine.get(5).replaceAll(";", "");
+				String descricao = parseLine.get(5).replaceAll(";", "");				
 
-				estabelecimentos.add(new Restaurant(id, nomeRestaurante, cidade, longitude, latitude, descricao));
+				estabelecimentos.add(new Restaurant(id, nomeRestaurante, cidade, new GeoJsonPoint(latitude,longitude), descricao));
 			});
 
 			produtosPorEstabelecimento();

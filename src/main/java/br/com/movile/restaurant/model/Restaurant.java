@@ -1,33 +1,28 @@
 package br.com.movile.restaurant.model;
 
-import br.com.movile.item.model.Item;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import lombok.Getter;
-
 import java.io.Serializable;
-import java.util.List;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "restaurant")
 public class Restaurant implements Serializable {
 
+	private static final long serialVersionUID = 5856157740319782874L;
 	@Id
 	private String id;
 	private String name;
 	private String addressCity;
-	private double longitude;
-	private double latitude;
+	private GeoJsonPoint location;
 	private String dishDescription;
 
 
-	public Restaurant(String id, String name, String addressCity, double longitude, double latitude, String dishDescription) {
+	public Restaurant(String id, String name, String addressCity, GeoJsonPoint location, String dishDescription) {
 		this.id = id;
 		this.name = name;
 		this.addressCity = addressCity;
-		this.longitude = longitude;
-		this.latitude = latitude;
+		this.location = location;
 		this.dishDescription = dishDescription;
 	}
 
@@ -55,22 +50,6 @@ public class Restaurant implements Serializable {
 		this.addressCity = addressCity;
 	}
 
-	public double getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(double longitude) {
-		this.longitude = longitude;
-	}
-
-	public double getLatitude() {
-		return latitude;
-	}
-
-	public void setLatitude(double latitude) {
-		this.latitude = latitude;
-	}
-
 	public String getDishDescription() {
 		return dishDescription;
 	}
@@ -79,17 +58,11 @@ public class Restaurant implements Serializable {
 		this.dishDescription = dishDescription;
 	}
 
-	public Restaurant() {};
+	public GeoJsonPoint getLocation() {
+		return location;
+	}
 
-	@Override
-	public String toString() {
-		return "Restaurant{" +
-				"id='" + id + '\'' +
-				", name='" + name + '\'' +
-				", addressCity='" + addressCity + '\'' +
-				", longitude='" + longitude + '\'' +
-				", latitude='" + latitude + '\'' +
-				", dishDescription='" + dishDescription + '\'' +
-				'}';
+	public void setLocation(GeoJsonPoint location) {
+		this.location = location;
 	}
 }
