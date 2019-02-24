@@ -15,7 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.geo.GeoResult;
 import org.springframework.data.geo.GeoResults;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -34,8 +36,8 @@ public class CargaGeral {
     private MotoboyService service;
 
 
-    @GetMapping
-    public String carga() {
+    @GetMapping("/{id}")
+    public String carga(@PathVariable String id) {
         Carga carga = new Carga();
         carga.cargaGeral();
 
@@ -44,7 +46,7 @@ public class CargaGeral {
         carga.getEstabelecimentos().stream().forEach(x -> estabelecimentoDAO.save(x));
         carga.getProdutos().stream().forEach(x -> produtoDAO.save(x));
 
-        Restaurant restaurant = carga.getEstabelecimentos().get(100);
+        Restaurant restaurant = estabelecimentoDAO.findById(id).get();
         
         System.err.println(restaurant);
         

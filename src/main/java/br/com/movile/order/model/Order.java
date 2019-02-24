@@ -5,6 +5,7 @@ import java.util.List;
 
 import br.com.movile.customer.model.Customer;
 import br.com.movile.item.model.Item;
+import br.com.movile.motoboy.model.Motoboy;
 import br.com.movile.restaurant.model.Restaurant;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -20,16 +21,17 @@ public class Order {
 	private List<Item> items;
 	private Customer customer;
 	private Restaurant restaurant;
+	private Motoboy motoboy;
 	private LocalDateTime date;
 
 	@Override
 	public String toString() {
-		return "Order{" +
-				"id=" + id +
-				", items=" + items +
-				", customer=" + customer +
-				", restaurant=" + restaurant +
-				", date=" + date +
-				'}';
+		return "Order [id=" + id + 
+				", items=" + items + 
+				", customer=" + customer + 
+				", restaurant=" + restaurant
+				+ ", motoboy=" + motoboy + 
+				", date=" + date + 
+				"]";
 	}
 }
