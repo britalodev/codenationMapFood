@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("items")
+@RequestMapping("itens")
 public class ItemController {
 
 
@@ -25,6 +27,15 @@ public class ItemController {
         itemService.insert(item);
     }
     //Retrieve
+    @GetMapping
+    public List<Item> findAll (){
+        return itemService.findAll();
+    }
+
+    @GetMapping("{id}")
+    public Item findById (@PathVariable String id){
+        return itemService.findById(id);
+    }
 
     //Update
 

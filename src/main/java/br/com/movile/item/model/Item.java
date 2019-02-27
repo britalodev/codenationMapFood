@@ -29,6 +29,7 @@ public class Item {
         this.unitPrice = unitPrice;
         this.addressCity = addressCity;
     }
+     public Item (){}
 
     @Override
     public String toString() {
