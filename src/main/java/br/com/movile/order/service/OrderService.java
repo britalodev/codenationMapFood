@@ -27,6 +27,7 @@ public class OrderService {
 		Restaurant restaurant = order.getRestaurant();
 		Double distance = 10.00;
 		List<GeoResult<Motoboy>> buscaPorProximidade = motoboyService.buscaPorProximidade(restaurant, distance);
+		
 		String id = buscaPorProximidade.get(0).getContent().getId();
 	}
 }

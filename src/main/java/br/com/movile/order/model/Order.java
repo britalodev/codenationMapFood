@@ -11,6 +11,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Document(collection = "order")
 @Getter
@@ -18,10 +19,13 @@ public class Order {
 
 	@Id
 	private long id;
+	@Setter
 	private List<Item> items;
 	private Customer customer;
 	private Restaurant restaurant;
+	@Setter
 	private Motoboy motoboy;
+	@Setter
 	private LocalDateTime date;
 
 	@Override
