@@ -21,8 +21,6 @@ public class OrderService {
 	@Autowired
 	private OrderRepository orderRepository;
 	@Autowired
-	private DeliveryRepository deliveryRepository;
-	@Autowired
 	private MotoboyService motoboyService;
 	@Autowired
 	private RestaurantService restaurantService;
@@ -44,8 +42,4 @@ public class OrderService {
 		return restaurantService.getCustomerDistance(customer, restaurant);
 	}
 	
-	public void addOrder(DeliveryModel delivery, Order order) {
-		delivery.addOrder(order);
-		deliveryRepository.save(delivery);
-	}
 }
