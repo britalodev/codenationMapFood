@@ -26,7 +26,7 @@ public class OrderService {
 	public void makeAWish(Order order) {
 		Restaurant restaurant = order.getRestaurant();
 		Double distance = 10.00;
-		List<GeoResult<Motoboy>> buscaPorProximidade = motoboyService.buscaPorProximidade(restaurant, distance);
+		List<GeoResult<Motoboy>> buscaPorProximidade = motoboyService.searchBetterMotoboyForDelivery(restaurant, distance);
 		
 		String id = buscaPorProximidade.get(0).getContent().getId();
 	}

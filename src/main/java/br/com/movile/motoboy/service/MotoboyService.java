@@ -28,8 +28,8 @@ public class MotoboyService {
 	private MongoOperations mongoOperations;
 	@Autowired
 	private MongoTemplate mongoTemplate;
-
-	public List<GeoResult<Motoboy>> buscaPorProximidade(Restaurant restaurant, Double distance) {
+	
+	public List<GeoResult<Motoboy>> searchBetterMotoboyForDelivery(Restaurant restaurant, Double distance) {
 
 		Point point = new Point(restaurant.getLocation().getX(), restaurant.getLocation().getY());
 		NearQuery maxDistance = NearQuery.near(point).inKilometers().maxDistance(distance, Metrics.KILOMETERS);
