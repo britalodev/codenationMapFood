@@ -3,13 +3,14 @@ package br.com.movile.order.model;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.geo.Distance;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import br.com.movile.customer.model.Customer;
 import br.com.movile.item.model.Item;
 import br.com.movile.motoboy.model.Motoboy;
 import br.com.movile.restaurant.model.Restaurant;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,6 +28,7 @@ public class Order {
 	private Motoboy motoboy;
 	@Setter
 	private LocalDateTime date;
+	private Distance distance;
 
 	@Override
 	public String toString() {
