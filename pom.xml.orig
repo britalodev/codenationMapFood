@@ -56,7 +56,11 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
+<<<<<<< HEAD
 			<version>5.3.2</version>
+=======
+			<version>5.3.1</version>
+>>>>>>> origin/Item
 			<scope>test</scope>
 		</dependency>
 		<dependency>

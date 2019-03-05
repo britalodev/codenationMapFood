@@ -137,14 +137,13 @@ public class Carga {
 
 				String id = parseLine.get(1);
 				String descricao = parseLine.get(0);
-				String restauranteId = parseLine.get(2);
-				String restaurante = parseLine.get(3);
+				String restauranteId = parseLine.get(3);
+				String restaurante = parseLine.get(2);
 				String classificacao = parseLine.get(4);
-				Decimal128 precoUnitario = Decimal128.parse(parseLine.get(5));
+				BigDecimal precoUnitario = new BigDecimal(parseLine.get(5));
 				String cidade = parseLine.get(6);
 
-				produtos.add(
-						new Item(id, descricao, restauranteId, restaurante, classificacao, precoUnitario, cidade));
+				produtos.add( new Item(id, descricao, restaurante, restauranteId, classificacao, precoUnitario, cidade));
 			});
 
 		} catch (IOException e) {
