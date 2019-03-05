@@ -1,11 +1,10 @@
 package br.com.movile.order.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.geo.GeoResult;
+import org.springframework.data.geo.Distance;
 import org.springframework.stereotype.Service;
 
+import br.com.movile.customer.model.Customer;
 import br.com.movile.exception.model.NoMotoboyAvailableException;
 import br.com.movile.motoboy.model.Motoboy;
 import br.com.movile.motoboy.service.MotoboyService;
@@ -13,6 +12,7 @@ import br.com.movile.order.model.Order;
 import br.com.movile.order.repository.OrderRepository;
 import br.com.movile.restaurant.model.Restaurant;
 import br.com.movile.restaurant.repository.RestaurantRepository;
+import br.com.movile.restaurant.service.RestaurantService;
 
 @Service
 public class OrderService {
@@ -22,11 +22,20 @@ public class OrderService {
 	@Autowired
 	private MotoboyService motoboyService;
 	@Autowired
+	private RestaurantService restaurantService;
+	@Autowired
 	private RestaurantRepository restaurantDAO;
 
-	public void makeAWish(Order order) throws NoMotoboyAvailableException  {
-		Restaurant restaurant = order.getRestaurant();
-		Double distance = 10.00;
-		Motoboy searchBetterMotoboyForDelivery = motoboyService.searchBetterMotoboyForDelivery(restaurant, distance);
+	public void makeAWish(Order order, Restaurant restaurant, Customer customer, double distance) throws NoMotoboyAvailableException  {
+		order.setMotoboy(searchBetterMotoboyForDelivery(order, distance));
+		order.setDistance(getDistanceCustomer(restaurant, customer));
+	}
+
+	private Motoboy searchBetterMotoboyForDelivery(Order order, double distance) throws NoMotoboyAvailableException {
+		return motoboyService.searchBetterMotoboyForDelivery(order.getRestaurant(), distance);
+	}
+
+	private Distance getDistanceCustomer(Restaurant restaurant, Customer customer) {
+		return restaurantService.getCustomerDistance(customer, restaurant);
 	}
 }

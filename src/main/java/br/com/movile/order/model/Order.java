@@ -28,6 +28,7 @@ public class Order {
 	private Motoboy motoboy;
 	@Setter
 	private LocalDateTime date;
+	@Setter
 	private Distance distance;
 
 	@Override

@@ -33,7 +33,6 @@ public class DeliveryModel {
 		return orders.size();
 	}
 	
-	
 	private void orderByDistance(){		
 		Collections.sort(orders, Comparator.comparing(Order::getDistance));
 	}
