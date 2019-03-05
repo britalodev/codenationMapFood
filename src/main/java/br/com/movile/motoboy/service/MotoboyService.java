@@ -21,8 +21,6 @@ public class MotoboyService {
 	private MotoboyRepository motoboyRepository;
 	@Autowired
 	private MongoOperations mongoOperations;
-	@Autowired
-	private MongoTemplate mongoTemplate;
 	
 	public Motoboy searchBetterMotoboyForDelivery(Restaurant restaurant, Double distance) throws NoMotoboyAvailableException {
 
