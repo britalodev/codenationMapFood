@@ -26,13 +26,18 @@ public class MotoboyService {
 	
 	public Motoboy searchBetterMotoboyForDelivery(Restaurant restaurant, Double distance) throws NoMotoboyAvailableException {
 
-		Point point = new Point(restaurant.getLocation().getX(), restaurant.getLocation().getY());
-		NearQuery maxDistance = NearQuery.near(point).inKilometers().maxDistance(distance, Metrics.KILOMETERS);
+		NearQuery maxDistance = generateQueryForSearch(restaurant, distance);
 		GeoResults<Motoboy> geoNear = mongoOperations.geoNear(maxDistance, Motoboy.class);
 		if(geoNear.getContent().isEmpty()) {
 			throw new NoMotoboyAvailableException("No motoboy found nearby!");
 		} else
 			return geoNear.getContent().get(0).getContent();
+	}
+
+	private NearQuery generateQueryForSearch(Restaurant restaurant, Double distance) {
+		Point point = new Point(restaurant.getLocation().getX(), restaurant.getLocation().getY());
+		NearQuery maxDistance = NearQuery.near(point).inKilometers().maxDistance(distance, Metrics.KILOMETERS);
+		return maxDistance;
 	}
 
 }
