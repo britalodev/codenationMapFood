@@ -9,6 +9,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bson.codecs.BigDecimalCodec;
+import org.bson.types.Decimal128;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 
 import br.com.movile.customer.model.Customer;
@@ -138,7 +140,7 @@ public class Carga {
 				String restauranteId = parseLine.get(2);
 				String restaurante = parseLine.get(3);
 				String classificacao = parseLine.get(4);
-				BigDecimal precoUnitario = new BigDecimal(parseLine.get(5));
+				Decimal128 precoUnitario = Decimal128.parse(parseLine.get(5));
 				String cidade = parseLine.get(6);
 
 				produtos.add(
