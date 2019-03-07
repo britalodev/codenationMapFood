@@ -37,13 +37,13 @@ public class ItemController {
 		return itemService.findAll();
 	}
 
-	@GetMapping("/id/{id}")
+	@GetMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	public Item findById(@PathVariable("id") String id){
 		return itemService.findById(id);
 	}
 
-	@GetMapping("/descriptions/{description}")
+	@GetMapping("/{description}")
 	@ResponseStatus(HttpStatus.OK)
 	public List<Item> findByDescription(@PathVariable("description") String description) {
 		return itemService.findByDescriptionLike(description);
