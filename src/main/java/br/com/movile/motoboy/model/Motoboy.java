@@ -14,6 +14,8 @@ import lombok.Setter;
 public class Motoboy {
 
 	@Id
+    @Getter
+    @Setter
 	private String id;
 	@Setter
 	@GeoSpatialIndexed(type = GeoSpatialIndexType.GEO_2DSPHERE)
@@ -28,5 +30,4 @@ public class Motoboy {
 	public String toString() {
 		return "Motoboy [id=" + id + ", location=" + location + "]";
 	}
-
 }

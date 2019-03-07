@@ -9,8 +9,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bson.codecs.BigDecimalCodec;
-import org.bson.types.Decimal128;
+import org.springframework.data.geo.Point;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 
 import br.com.movile.customer.model.Customer;
@@ -19,6 +18,11 @@ import br.com.movile.motoboy.model.Motoboy;
 import br.com.movile.restaurant.model.Restaurant;
 
 public class Carga {
+
+	public static void main(String[] args) {
+		Carga carga = new Carga();
+		carga.cargaGeral();
+	}
 
 	Path caminho = null;
 	List<String> allLines;
@@ -108,9 +112,9 @@ public class Carga {
 				String cidade = parseLine.get(2);
 				double longitude = Double.parseDouble(parseLine.get(3));
 				double latitude = Double.parseDouble(parseLine.get(4));
-				String descricao = parseLine.get(5).replaceAll(";", "");				
+				String descricao = parseLine.get(5).replaceAll(";", "");
 
-				estabelecimentos.add(new Restaurant(id, nomeRestaurante, cidade, new GeoJsonPoint(latitude,longitude), descricao));
+				estabelecimentos.add(new Restaurant(id, nomeRestaurante, cidade, new GeoJsonPoint(new Point(longitude, latitude)), descricao));
 			});
 
 			produtosPorEstabelecimento();
@@ -143,7 +147,8 @@ public class Carga {
 				BigDecimal precoUnitario = new BigDecimal(parseLine.get(5));
 				String cidade = parseLine.get(6);
 
-				produtos.add( new Item(id, descricao, restaurante, restauranteId, classificacao, precoUnitario, cidade));
+				produtos.add(
+						new Item(id, descricao, restauranteId, restaurante, classificacao, precoUnitario, cidade));
 			});
 
 		} catch (IOException e) {
