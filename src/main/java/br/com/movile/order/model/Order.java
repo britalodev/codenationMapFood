@@ -18,23 +18,27 @@ import lombok.Setter;
 @Getter
 public class Order {
 
-	@Id
-	@Setter
-	private ObjectId id;
+    @Id
+    @Setter
+    private ObjectId id;
 
-	private Customer customer;
-	private Restaurant restaurant;
-	private List<Item> items;
+    private Customer customer;
+    private LocalDateTime date;
+    private Restaurant restaurant;
+    private List<Item> items;
+    @Setter
+    private OrderStatus status;
 
-	@Setter
-	private Motoboy motoboy;
-	@Setter
-	private LocalDateTime date;
 
-	@Override
-	public String toString() {
-		return "Order [id=" + id + ", customer=" + customer + ", restaurant=" + restaurant + ", items=" + items
-				+ ", motoboy=" + motoboy + ", date=" + date + "]";
-	}
-
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", customer=" + customer +
+                ", date=" + date +
+                ", restaurant=" + restaurant +
+                ", items=" + items +
+                ", status=" + status +
+                '}';
+    }
 }

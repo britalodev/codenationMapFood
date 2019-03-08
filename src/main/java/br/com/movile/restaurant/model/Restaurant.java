@@ -34,6 +34,14 @@ public class Restaurant implements Serializable {
 		this.dishDescription = dishDescription;
 	}
 
+	public Restaurant(String id, String name, String addressCity, double latitude, double longitude, String dishDescription) {
+		this.id = id;
+		this.name = name;
+		this.addressCity = addressCity;
+		this.location = new GeoJsonPoint(latitude, longitude);
+		this.dishDescription = dishDescription;
+	}
+
 	@Override
 	public String toString() {
 		return "Restaurant [id=" + id + ", name=" + name + ", addressCity=" + addressCity + ", location=" + location
