@@ -45,7 +45,7 @@ public class DeliveryService {
     }
 
     @Scheduled(fixedRate = 30000)
-    private void closeExpiredDeliveries() throws NoMotoboyAvailableException {
+    public void closeExpiredDeliveries() throws NoMotoboyAvailableException {
         List<Delivery> deliveries = deliveryRepository
                 .findAllOpened(DeliveryStatus.OPENED, LocalDateTime.now().minusMinutes(windowDuration));
         for (Delivery delivery : deliveries) {
