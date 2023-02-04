@@ -6,7 +6,7 @@
 
 ## Descrição
 
-Para utilizar a metodologia CBL - Challenge Based Learning, os participantes do programa executarão um projeto real baseado nos aprendizados que recebem dos tutores, mentores e equipes da Code:Nation e da Movile. Para isso, os selecionados serão divididos em squads para execução do projeto MapFood.
+Para utilizar a metodologia CBL - Challenge Based Learning, os participantes do programa executarão um projeto real baseado nos aprendizados que recebem dos tutores,  mentores e equipes da Code:Nation e da Movile. Para isso, os selecionados serão divididos em squads para execução do projeto MapFood.
 
 O objetivo do squad é fornecer autonomia para que cada equipe tome decisões e que cada integrante descubra seu papel dentro do grupo, tornando-os aptos a resolver problemas reais por conta própria.
 
