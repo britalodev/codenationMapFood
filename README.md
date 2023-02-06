@@ -10,18 +10,19 @@ Para utilizar a metodologia CBL - Challenge Based Learning, os participantes do 
 
 O objetivo do squad é fornecer autonomia para que cada equipe tome decisões e que cada integrante descubra seu papel dentro do grupo, tornando-os aptos a resolver problemas reais por conta própria.
 
---- 
-🇬🇧 ## Description
+
+## 🇬🇧 Description
 
 To use the CBL - Challenge Based Learning methodology, program participants will carry out a real project based on the learning they receive from tutors, mentors and teams from Code:Nation and Movile. For this, those selected will be divided into squads to execute the MapFood project.
 
 The objective of the squad is to provide autonomy for each team to make decisions and for each member to discover their role within the group, making them able to solve real problems on their own.
+
 ---
 ## Objetivo:
 
 O objetivo do projeto é criar uma API para organizar os pedidos e gerar os melhores trajetos de entrega do iFood.
 
-🇬🇧 ## Goal:
+## 🇬🇧 Goal:
 
 The aim of the project is to create an API to organize orders and generate the best iFood delivery routes.
 
@@ -34,7 +35,7 @@ Utilizando um conjunto de dados da plataforma iFood, contendo informações como
 Ao final do programa, além de apresentar a API criada, cada squad deverá expor quais são os pontos de melhoria e quais seriam os próximos passos no projeto, caso fossem seguir adiante.
 
 
- 🇬🇧 ## Context
+##  🇬🇧 Context
 
 Using a set of data from the iFood platform, containing information such as affiliated establishments, their locations and products, participants must build an API to manage this information, in addition to a base with the drivers who will make the deliveries and the respective order lists (with customers and location). The API must present the best route and can also bring other information (at the discretion of the squads), such as the cost of each establishment with the mileage traveled, delivery time, etc.
 
@@ -50,7 +51,7 @@ Para o projeto MapFood, é necessário que as squads se utilizem dos aprendizado
 - Testes unitários são um bônus importante
 
 
-🇬🇧 ## Mandatory technical requirements
+##  🇬🇧 Mandatory technical requirements
 
 For the MapFood project, it is necessary for the squads to use the learnings passed on by the AceleraDev program, so the solution must be built according to the following requirements:
 
@@ -71,17 +72,16 @@ For the MapFood project, it is necessary for the squads to use the learnings pas
 - Para o tempo de entrega, é importante considerar os seguintes parâmetros:
 	- Deslocamento do motoboy até o estabelecimento;
 	- Deslocamento do motoboy até a entrega do pedido ao cliente.
-
-
-🇬🇧 ## MapFood system settings
+	
+##  🇬🇧 MapFood system settings
 
 - A motoboy can take a maximum of 5 orders per delivery regardless of the number of items in the order;
 - The preparation time for each order is 10 minutes;
 - Consumption motorcycle: 42km/L
 - An order is understood as a delivery request made by a user, and it may contain several items (hot dog, french fries, soda, etc);
 - For delivery time, it is important to consider the following parameters:
-- Displacement of the motoboy to the establishment;
-- Displacement of the motoboy until the delivery of the order to the customer.
+	- Displacement of the motoboy to the establishment;
+	- Displacement of the motoboy until the delivery of the order to the customer.
 
 ---
 ## Casos práticos do sistema
@@ -101,7 +101,7 @@ Para facilitar o entendimento da API que deverá ser construída, segue abaixo a
 **Então** o sistema poderá gerar um relatório para o mesmo.
 
 
-🇬🇧 ## Practical cases of the system
+## 🇬🇧 Practical cases of the system
 
 To facilitate the understanding of the API that should be built, below are some practical cases of possible interactions that the system may contain:
 
@@ -127,7 +127,7 @@ Com exceção dos requisitos técnicos obrigatórios, as funcionalidades e seus 
 
 É necessário que apenas uma pessoa do squad faça a submissão dos códigos para que os mentores possam fazer a avaliação.
 
-🇬🇧 ## Additional Information
+##  🇬🇧 Additional Information
 
 It is the role of the squad to define which attributes will be taken into account to define the best route. Some examples are: mileage, delivery time, ability to pick up and deliver multiple orders on a single route, etc.
 
