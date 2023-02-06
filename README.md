@@ -4,6 +4,8 @@
 
 [Detalhes técnicos](DETALHES_TECNICOS.md)
 
+[ 🇬🇧 Technical Details](DETALHES_TECNICOS.md)
+
 ## Descrição 
 
 Para utilizar a metodologia CBL - Challenge Based Learning, os participantes do programa executarão um projeto real baseado nos aprendizados que recebem dos tutores,  mentores e equipes da Code:Nation e da Movile. Para isso, os selecionados serão divididos em squads para execução do projeto MapFood.
